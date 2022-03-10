@@ -88,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Méthode qui va permettre en quelque sorte de sérialisé les objets plats
+     * qui sont ajoutés, dans un fichier texte à chaque fois que l'on ferme l'application
      */
     public void enregistre() {
         String ligne;
@@ -99,8 +100,9 @@ public class MainActivity extends AppCompatActivity {
             for ( Plat plat : list ) {
                 ligne = plat.getNom() + "|" + plat.getDuree() + "|" + plat.getDeg();
                 fichier.write(ligne.getBytes());
-                fichier.close();
+
             }
+            fichier.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -109,7 +111,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Méthode qui permet de charger les données depuis un fichier texte (désérialisation)
+     * à l'ouverture de l'application
      */
     public void chargementDonnee() {
         String plat;
@@ -129,6 +132,13 @@ public class MainActivity extends AppCompatActivity {
         Afficher.list = listPlat;
     }
 
+    /**
+     *  Méthode qui permet de récupérer chaque attribut de l'objet plat lors de la désérialisation
+     *  L'on repère les different attribut dans le fichier texte par ce qu'ils sont séparés par
+     *  un caractère séparateur qui est : un tube "|"
+     * @param plat : on prend l'objet Plat que l'on souhaite désérialiser
+     * @return : on retourne un objet plat avec tout ses attributs
+     */
     private Plat getPlat(String plat) {
         String REGEX = "\\|";
         Pattern pattern = Pattern.compile(REGEX);
@@ -137,11 +147,21 @@ public class MainActivity extends AppCompatActivity {
         return new Plat(result[0], result[1], Integer.parseInt(result[2].toString()));
     }
 
+    /**
+     * On créé un nouveau menu d'option
+     * @param menu : on prend un parametre un menu
+     * @return on retourne le menu d'option
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         new MenuInflater(this).inflate(R.menu.menu_option, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.aide:
@@ -159,7 +179,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     *
+     */
     public void confirmation() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.attention)
@@ -179,12 +201,14 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     *
+     */
     public void aide() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.attention)
                 .setMessage(R.string.message_aide)
                 .setNeutralButton(R.string.ferme, null)
                 .show();
-
     }
 }
