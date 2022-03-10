@@ -60,17 +60,18 @@ public class Plat {
     }
 
     /**
-     * Méthode qui permet de modifier la duree de cuisson de l'objet Plat
-     * @param deg : élément duree que l'on souhaite modifier
+     * Méthode qui permet de modifier le degrès de température de cuisson de l'objet Plat
+     * @param deg : élément degrès de température que l'on souhaite modifier
      */
     public void setDeg(int deg) {
         this.deg = deg;
     }
 
     /**
-     *
-     * @param o
-     * @return
+     * Méthode qui permet de comparer les nom de plats
+     * Utilisé afin que l'on ne puisse pas inscrire plusieurs fois le meme plat
+     * @param o On prend le nouveau plat saisie pour tester
+     * @return on return un boolean true si ils sont équivalent sinon false
      */
     public boolean equals(Plat o) {
         return this.nom.equals(o.getNom());
