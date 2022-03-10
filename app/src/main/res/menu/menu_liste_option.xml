@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/supprimer"
+        android:title="@string/supprimer"/>
+
+    <item
+        android:id="@+id/voirThermostat"
+        android:title="@string/voir_thermostat"/>
+
+    <item
+        android:id="@+id/modifier"
+        android:title="@string/modifier"/>
+
+    <item
+        android:id="@+id/annuler"
+        android:title="@string/annuler"/>
+
+
+</menu>

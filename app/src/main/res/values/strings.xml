@@ -1,0 +1,63 @@
+<resources>
+    <!--   Titre de l'application   -->
+    <string name="app_name">"OutilCuisson"</string>
+
+    <!--   Titres des onglets   -->
+    <string name="afficher">"AFFICHER"</string>
+    <string name="ajouter">"AJOUTER"</string>
+
+    <!--   Titres sur la page "AFFICHER"   -->
+    <string name="tps_cuisson">"Temps de cuisson"</string>
+    <string name="platT">"Plat"</string>
+    <string name="dureeT">"Durée"</string>
+    <string name="degresT">"Degrès"</string>
+
+    <!--   Titre sur la page "AJOUTER"   -->
+    <string name="titre">"Description cuisson d'un plat"</string>
+    <string name="plat">"Plat"</string>
+    <string name="duree">"Durée de la cuisson"</string>
+    <string name="temperature">"Température"</string>
+    <string name="btn_effacer">"Effacer"</string>
+    <string name="btn_valider">"Valider"</string>
+
+
+    <string name="toast_ajout">"Le plat %s a bien été ajouté à la liste"</string>
+
+    <string name="erreur_de_saisie">"Erreur de saisie"</string>
+
+    <string name="alert_erreur_de_saisie">"L'une des informations saisie ets incorrecte :
+        \n\t - nom du plat vide ou contient | \n\t - duree de cuisson nulle ou trop grande \n\nVerifiez les valeurs saisies"
+    </string>
+
+    <string name="alert_retour">"retour"</string>
+
+    <!--  Texte des messages options pour la liste des plats  -->
+    <string name="supprimer">Supprimer</string>
+    <string name="voir_thermostat">Voir thermostat</string>
+    <string name="annuler">Annuler</string>
+    <string name="modifier">Modifier</string>
+
+    <!--    -->
+    <string name="titreAlertDialog">Equivalent thermostat</string>
+    <string name="equivalentThermostatText">"Cuisson du plat : %s \n\nPour obtenir la température %d°, vous devez régler le thermostat sur %d"</string>
+    <string name="retourAlertDialog">Retour</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_menu_option_reinitialiser">Réinitialiser</string>
+    <string name="text_menu_option_aide">Aide</string>
+
+    <string name="attention">"Attention !"</string>
+    <string name="contenu_attention">"Etes-vous sur de vouloir réinitialiser l'application ?"</string>
+    <string name="oui">"Oui"</string>
+    <string name="non">"Non"</string>
+
+    <string name="ferme">"Fermer"</string>
+
+    <string name="aide">"Aide"</string>
+    <string name="message_aide">texteàremplir</string>
+    <string name="alert_erreur_plat_existant">erreur_à_completer</string>
+
+
+</resources>

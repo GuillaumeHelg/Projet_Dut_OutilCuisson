@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Afficher">
+
+
+    <TextView
+        android:layout_marginTop="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tps_cuisson"
+        style="@style/titreApp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="@string/platT"
+            android:gravity="center"
+            style="@style/titreCategListe"/>
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="@string/dureeT"
+            style="@style/titreCategListe"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/degresT"
+            style="@style/titreCategListe"/>
+
+
+    </LinearLayout>
+    <ListView
+        android:id="@+id/liste_plat"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>

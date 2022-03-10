@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/nomPlat"
+        android:typeface="monospace"
+        android:textStyle="bold"
+        android:textSize="@dimen/taille_texte_liste"
+        android:paddingTop="@dimen/padding_liste"
+        android:paddingLeft="15dp"
+        android:paddingBottom="@dimen/padding_liste"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/couleur_item_liste"
+        android:text="Nom du plat"
+        android:layout_marginRight="50dp"/>
+
+    <TextView
+        android:id="@+id/duree"
+        android:typeface="monospace"
+        android:textStyle="bold"
+        android:textSize="@dimen/taille_texte_liste"
+        android:paddingTop="@dimen/padding_liste"
+        android:paddingBottom="@dimen/padding_liste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/couleur_item_liste"
+        android:text="0 h 50"
+        android:layout_marginRight="20dp"/>
+
+    <TextView
+        android:id="@+id/degres"
+        android:typeface="monospace"
+        android:textStyle="bold"
+        android:textSize="@dimen/taille_texte_liste"
+        android:paddingTop="@dimen/padding_liste"
+        android:paddingBottom="@dimen/padding_liste"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/couleur_item_liste"
+        android:text="150"/>
+
+</LinearLayout>

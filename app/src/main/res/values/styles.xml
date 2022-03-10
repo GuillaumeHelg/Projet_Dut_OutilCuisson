@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="titreApp">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_titre</item>
+        <item name="android:textSize">@dimen/size_text_titre</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">@dimen/espace_autour_gros_titre</item>
+    </style>
+
+    <style name="titreCategListe">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_titre_liste</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

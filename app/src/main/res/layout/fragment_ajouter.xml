@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".Ajouter">
+
+    <TextView
+        android:id="@+id/arf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titre"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <!-- Saisir le nom du plat -->
+    <TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/plat"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
+
+        <EditText
+            android:id="@+id/EditNomPlat"
+            android:layout_span="2"
+            android:inputType="text"
+            android:maxLength="20"/>
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/duree"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
+
+        <TimePicker
+            android:id="@+id/TPDureeCuisson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:timePickerMode="spinner"
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temperature"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
+
+        <EditText
+            android:id="@+id/EditTemperature"
+            android:layout_column="2"
+            android:inputType="number"/>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:id="@+id/btnEffacer"
+            android:layout_column="1"
+            android:text="@string/btn_effacer"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnValider"
+            android:text="@string/btn_valider"
+            />
+
+    </TableRow>
+</TableLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Taille des titres des parties  -->
+    <dimen name="size_text_titre">20sp</dimen>
+
+    <!--  Espaces autour des gros titres  -->
+    <dimen name="espace_autour_gros_titre">15dp</dimen>
+
+    <dimen name="taille_texte_liste">15sp</dimen>
+    <dimen name="padding_liste">10dp</dimen>
+</resources>
