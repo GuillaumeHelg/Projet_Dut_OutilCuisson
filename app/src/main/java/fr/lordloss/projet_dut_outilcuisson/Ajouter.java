@@ -59,7 +59,8 @@ public class Ajouter extends Fragment implements View.OnClickListener {
         vueDuFragment.findViewById(R.id.btnEffacer).setOnClickListener(this);
         duree = vueDuFragment.findViewById(R.id.TPDureeCuisson);
         duree.setIs24HourView(true);
-
+        duree.setCurrentHour(0);
+        duree.setCurrentMinute(5);
         nomPlat = vueDuFragment.findViewById(R.id.EditNomPlat);
         temperature = vueDuFragment.findViewById(R.id.EditTemperature);
 

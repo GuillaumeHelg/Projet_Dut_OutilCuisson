@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Plat> list = Afficher.list;
 
             for ( Plat plat : list ) {
-                ligne = plat.getNom() + "|" + plat.getDuree() + "|" + plat.getDeg();
+                ligne = plat.getNom() + "|" + plat.getDuree() + "|" + plat.getDeg() + "\n";
                 fichier.write(ligne.getBytes());
 
             }
@@ -144,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         Pattern pattern = Pattern.compile(REGEX);
         String[] result = pattern.split(plat);
         logger.severe(Arrays.toString(result));
-        return new Plat(result[0], result[1], Integer.parseInt(result[2].toString()));
+        return new Plat(result[0], result[1], Integer.parseInt(result[2]));
     }
 
     /**
