@@ -175,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.annule:
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
