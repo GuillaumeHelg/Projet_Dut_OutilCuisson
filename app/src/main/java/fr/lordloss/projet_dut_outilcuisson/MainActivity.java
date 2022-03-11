@@ -6,29 +6,23 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-import fr.lordloss.projet_dut_outilcuisson.adapter.PlatListeAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -104,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
             fichier.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -125,8 +117,6 @@ public class MainActivity extends AppCompatActivity {
             while ((plat = fichiertexte.readLine()) != null) {
                 listPlat.add(getPlat(plat));
             }
-        } catch (FileNotFoundException e) {
-            logger.severe(e.getMessage());
         } catch (IOException e) {
             logger.severe(e.getMessage());
         }
@@ -159,9 +149,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param item
-     * @return
+     * Methode sur le menu d'option du fragment afficher
+     * @param item :
+     * @return :
      */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -177,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     /**
      *

@@ -4,9 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".Ajouter">
+    tools:context=".Ajouter"
+    >
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+
+        />
 
     <TextView
         android:id="@+id/arf"
@@ -23,10 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/plat"
-            android:gravity="left"
+            android:gravity="start"
             android:textStyle="bold"
-            android:layout_marginLeft="5dp"/>
-
+            android:layout_marginStart="5dp"/>
         <EditText
             android:id="@+id/EditNomPlat"
             android:layout_span="2"
@@ -38,27 +42,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/duree"
-            android:gravity="left"
+            android:gravity="start"
             android:textStyle="bold"
-            android:layout_marginLeft="5dp"/>
-
+            android:layout_marginStart="5dp"/>
         <TimePicker
             android:id="@+id/TPDureeCuisson"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:timePickerMode="spinner"
-            />
+            android:timePickerMode="spinner"/>
     </TableRow>
     <TableRow>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/temperature"
-            android:gravity="left"
+            android:gravity="start"
             android:textStyle="bold"
-            android:layout_marginLeft="5dp"/>
-
+            android:layout_marginStart="5dp"/>
         <EditText
             android:id="@+id/EditTemperature"
             android:layout_column="2"
@@ -69,13 +69,13 @@
             android:id="@+id/btnEffacer"
             android:layout_column="1"
             android:text="@string/btn_effacer"
-            android:layout_marginRight="5dp"
-            android:textStyle="bold"/>
+            android:layout_marginEnd="5dp"
+            android:textStyle="bold"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/btnValider"
-            android:text="@string/btn_valider"
-            />
+            android:text="@string/btn_valider"/>
 
     </TableRow>
 </TableLayout>

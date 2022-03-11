@@ -1,9 +1,12 @@
 package fr.lordloss.projet_dut_outilcuisson;
 
+import android.content.ClipData;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -12,9 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TimePicker;
+
 
 import java.util.ArrayList;
 
@@ -27,6 +29,8 @@ public class Afficher extends Fragment {
 
     /* Liste plat */
     private  ListView listePlat;
+
+
 
     public static ArrayList<Plat> list = new ArrayList<>();
 
@@ -68,17 +72,6 @@ public class Afficher extends Fragment {
                              Bundle savedInstanceState) {
         View vueDuFragment = inflater.inflate(R.layout.fragment_afficher, container, false);
         listePlat = vueDuFragment.findViewById(R.id.liste_plat);
-
-//        Plat plat1 = new Plat("Frite", "0h55", 152);
-//        Plat plat2 = new Plat("Poulet chaud", "0h55", 152);
-//        Plat plat3 = new Plat("Petite pute au bord de l'eau", "0h55", 152);
-//        Plat plat4 = new Plat("Léna Zee du port", "0h55", 152);
-//
-//        list.add(plat1);
-//        list.add(plat2);
-//        list.add(plat3);
-//        list.add(plat4);
-
         adapter = new PlatListeAdapter(getContext(), R.layout.liste_item, list);
 
         listePlat.setAdapter(adapter);
@@ -122,8 +115,17 @@ public class Afficher extends Fragment {
     }
 
     private void modfier(int position) {
-        Ajouter.newInstance();
+
+        Fragment fragment = new Ajouter();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
     }
+
+
 
     private void supprimer(int position) {
         list.remove(position);
@@ -158,9 +160,11 @@ public class Afficher extends Fragment {
     private void alert(int pos) {
         Plat plat = list.get(pos);
         new AlertDialog.Builder(getContext())
-                .setTitle(R.string.titreAlertDialog)
-                .setMessage(getString(R.string.equivalentThermostatText, plat.getNom(), plat.getDeg(), thermostat(plat.getDeg())))
-                .setNeutralButton(R.string.retourAlertDialog, null)
-                .show();
+            .setTitle(R.string.titreAlertDialog)
+            .setMessage(getString(R.string.equivalentThermostatText, plat.getNom(), plat.getDeg(), thermostat(plat.getDeg())))
+            .setNeutralButton(R.string.retourAlertDialog, null)
+            .show();
     }
+
+
 }
