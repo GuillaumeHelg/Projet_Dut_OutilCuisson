@@ -2,11 +2,16 @@
 <resources>
 
     <!--  Taille des titres des parties  -->
-    <dimen name="size_text_titre">20sp</dimen>
+    <dimen name="size_text_titre">30sp</dimen>
 
     <!--  Espaces autour des gros titres  -->
     <dimen name="espace_autour_gros_titre">15dp</dimen>
+    <dimen name="espace_au_dessus">10dp</dimen>
+    <dimen name="espace_au_dessous">50dp</dimen>
+
 
     <dimen name="taille_texte_liste">15sp</dimen>
     <dimen name="padding_liste">10dp</dimen>
+
+
 </resources>

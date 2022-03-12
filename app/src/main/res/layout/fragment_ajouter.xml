@@ -18,9 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/titre"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"/>
+        style="@style/titreApp"/>
 
     <!-- Saisir le nom du plat -->
     <TableRow>

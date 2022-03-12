@@ -1,6 +1,6 @@
 <resources>
     <!--   Titre de l'application   -->
-    <string name="app_name">"OutilCuisson"</string>
+    <string name="app_name">"Outil de cuisson"</string>
 
     <!--   Titres des onglets   -->
     <string name="afficher">"AFFICHER"</string>
@@ -58,6 +58,11 @@
     <string name="aide">"Aide"</string>
     <string name="message_aide">texteàremplir</string>
     <string name="alert_erreur_plat_existant">erreur_à_completer</string>
+
+    <!--  Texte par defaut de la liste  -->
+    <string name="liste_item_nomPlat">Nom du plat</string>
+    <string name="liste_item_duree">9 h 99</string>
+    <string name="liste_item_degree">999</string>
 
 
 </resources>

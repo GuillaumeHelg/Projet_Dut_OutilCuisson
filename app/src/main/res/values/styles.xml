@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--  Style des titres principal des onglets  -->
     <style name="titreApp">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/color_titre</item>
         <item name="android:textSize">@dimen/size_text_titre</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_margin">@dimen/espace_autour_gros_titre</item>
+        <item name="android:layout_marginBottom">@dimen/espace_au_dessous</item>
+        <item name="android:layout_marginTop">@dimen/espace_au_dessus</item>
     </style>
 
+    <!--  Style des titres avant la liste  -->
     <style name="titreCategListe">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/color_titre_liste</item>
         <item name="android:textStyle">bold</item>
     </style>
+
 </resources>

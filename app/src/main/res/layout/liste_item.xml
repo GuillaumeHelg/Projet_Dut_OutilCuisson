@@ -10,13 +10,13 @@
         android:textStyle="bold"
         android:textSize="@dimen/taille_texte_liste"
         android:paddingTop="@dimen/padding_liste"
-        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
         android:paddingBottom="@dimen/padding_liste"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:textColor="@color/couleur_item_liste"
-        android:text="Nom du plat"
-        android:layout_marginRight="50dp"/>
+        android:text="@string/liste_item_nomPlat"
+        android:layout_marginEnd="50dp"/>
 
     <TextView
         android:id="@+id/duree"
@@ -28,8 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/couleur_item_liste"
-        android:text="0 h 50"
-        android:layout_marginRight="20dp"/>
+        android:text="@string/liste_item_duree"
+        android:layout_marginEnd="20dp"/>
 
     <TextView
         android:id="@+id/degres"
@@ -41,6 +41,6 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:textColor="@color/couleur_item_liste"
-        android:text="150"/>
+        android:text="@string/liste_item_degree"/>
 
 </LinearLayout>
