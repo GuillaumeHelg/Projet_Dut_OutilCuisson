@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -145,9 +146,11 @@ public class MainActivity extends AppCompatActivity {
      * @return on retourne le menu d'option
      */
     public boolean onCreateOptionsMenu(Menu menu) {
-        new MenuInflater(this).inflate(R.menu.menu_option, menu);
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_option, menu);
+        return true;
     }
+
+
 
     /**
      * Methode sur le menu d'option du fragment afficher

@@ -64,5 +64,8 @@
     <string name="liste_item_duree">9 h 99</string>
     <string name="liste_item_degree">999</string>
 
+    <string name="plat_existe">Le plat %s existe bien déjà dans la liste !</string>
+    <string name="plat_existe_pas">Le plat %s n\'existe pas dans la liste !</string>
+
 
 </resources>

@@ -40,7 +40,7 @@
                 android:maxLength="20"
                 android:background="@drawable/input_custom"
                 android:paddingStart="10dp"
-                android:drawableStart="@drawable/ic_baseline_cake_24"
+                android:drawableStart="@drawable/ic_baseline_dinner_dining_24"
                 android:drawablePadding="10dp"/>
         </TableRow>
         <TableRow

@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/aide"
-        android:title="@string/text_menu_option_aide"/>
-    <item
-        android:id="@+id/reinitialiser"
-        android:title="@string/text_menu_option_reinitialiser"
-        />
-    <item
-        android:id="@+id/annule"
-        android:title="@string/annuler"/>
+        android:id="@+id/id_menu"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_more_vert_24">
+        <menu>
+            <item
+                android:icon="@drawable/ic_outline_lightbulb_24"
+                android:id="@+id/aide"
+                android:title="@string/text_menu_option_aide"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:icon="@drawable/ic_baseline_restore_24"
+                android:id="@+id/reinitialiser"
+                android:title="@string/text_menu_option_reinitialiser"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:icon="@drawable/ic_baseline_cancel_24"
+                android:id="@+id/annule"
+                android:title="@string/annuler"
+                app:showAsAction="ifRoom"/>
+        </menu>
+    </item>
+
 </menu>

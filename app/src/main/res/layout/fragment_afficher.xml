@@ -13,6 +13,30 @@
         android:text="@string/tps_cuisson"
         style="@style/titreApp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="50dp">
+
+        <EditText
+            android:id="@+id/plat_recherche"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_outline_search_24"
+            android:hint="Rechercher un plat"
+            android:layout_margin="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:background="@drawable/input_custom"/>
+
+        <Button
+            android:id="@+id/btn_recherche"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chercher"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,5 +64,6 @@
     <ListView
         android:id="@+id/liste_plat"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/liste_item"/>
 </LinearLayout>

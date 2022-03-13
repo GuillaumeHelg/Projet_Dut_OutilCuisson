@@ -1,5 +1,6 @@
 package fr.lordloss.projet_dut_outilcuisson;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.os.Bundle;
 
@@ -15,17 +16,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import fr.lordloss.projet_dut_outilcuisson.adapter.PlatListeAdapter;
 
 /**
  * Classe qui gère le fragment afficher
  */
-public class Afficher extends Fragment {
+public class Afficher extends Fragment implements View.OnClickListener {
 
     /* Liste plat */
     private  ListView listePlat;
@@ -35,6 +39,8 @@ public class Afficher extends Fragment {
     public static ArrayList<Plat> list = new ArrayList<>();
 
     public static PlatListeAdapter adapter;
+
+    EditText editText;
 
     /**
      * Température maximale pour la cuisson
@@ -72,9 +78,11 @@ public class Afficher extends Fragment {
                              Bundle savedInstanceState) {
         View vueDuFragment = inflater.inflate(R.layout.fragment_afficher, container, false);
         listePlat = vueDuFragment.findViewById(R.id.liste_plat);
-        adapter = new PlatListeAdapter(getContext(), R.layout.liste_item, list);
 
-        listePlat.setAdapter(adapter);
+        editText = (EditText) vueDuFragment.findViewById(R.id.plat_recherche);
+        vueDuFragment.findViewById(R.id.btn_recherche).setOnClickListener(this);
+
+        miseAjour();
 
         registerForContextMenu(listePlat);
 
@@ -99,6 +107,7 @@ public class Afficher extends Fragment {
      * Méthode invoquée automatiquement lorsque l'utilisateur choisira une option
      * dans un menu contextuel
      */
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
@@ -125,12 +134,15 @@ public class Afficher extends Fragment {
 
     }
 
+    public void miseAjour() {
+        adapter = new PlatListeAdapter(getContext(), R.layout.liste_item, list);
+        listePlat.setAdapter(adapter);
+    }
 
 
     private void supprimer(int position) {
         list.remove(position);
-        adapter = new PlatListeAdapter(getContext(), R.layout.liste_item, list);
-        listePlat.setAdapter(adapter);
+        miseAjour();
     }
 
     /**
@@ -159,7 +171,7 @@ public class Afficher extends Fragment {
      */
     private void alert(int pos) {
         Plat plat = list.get(pos);
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(requireContext())
             .setTitle(R.string.titreAlertDialog)
             .setMessage(getString(R.string.equivalentThermostatText, plat.getNom(), plat.getDeg(), thermostat(plat.getDeg())))
             .setNeutralButton(R.string.retourAlertDialog, null)
@@ -167,4 +179,21 @@ public class Afficher extends Fragment {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        String platRecherche = editText.getText().toString();
+        boolean trouvee = false;
+        if (view.getId() == R.id.btn_recherche) {
+            for (Plat plat: list) {
+                if (plat.getNom().equals(platRecherche)) {
+                    Toast.makeText(getContext(), getString(R.string.plat_existe, platRecherche), Toast.LENGTH_LONG).show();
+                    trouvee = true;
+                    break;
+                }
+            }
+            if (!trouvee) {
+                Toast.makeText(getContext(), getString(R.string.plat_existe_pas, platRecherche), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 }
