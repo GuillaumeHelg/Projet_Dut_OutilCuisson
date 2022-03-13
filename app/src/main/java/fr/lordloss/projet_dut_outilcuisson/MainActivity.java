@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
      * @param item :
      * @return :
      */
+    @SuppressLint("NonConstantResourceId")
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.aide:
@@ -169,7 +171,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Méthode qui demande une confirmation de réinitialisation de l'app et qui si la reponse est
+     * positive reéinitialise l'application
      */
     public void confirmation() {
         new AlertDialog.Builder(this)
@@ -191,11 +194,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Methode qui affiche l'aide sur l'application
      */
     public void aide() {
         new AlertDialog.Builder(this)
-                .setTitle(R.string.attention)
+                .setTitle(R.string.aide)
                 .setMessage(R.string.message_aide)
                 .setNeutralButton(R.string.ferme, null)
                 .show();

@@ -21,7 +21,7 @@
     <string name="btn_valider">"Valider"</string>
 
 
-    <string name="toast_ajout">"Le plat %s a bien été ajouté à la liste"</string>
+    <string name="toast_ajout">"✔    Le plat %s a bien été ajouté à la liste"</string>
 
     <string name="erreur_de_saisie">"Erreur de saisie"</string>
 
@@ -56,7 +56,7 @@
     <string name="ferme">"Fermer"</string>
 
     <string name="aide">"Aide"</string>
-    <string name="message_aide">texteàremplir</string>
+    <string name="message_aide">"Vous avez deux onglets accessible :\n\nAfficher :\nVous retrouvez tous les plats que vous avez ajouter. Avec un appuis long sur un plat vous avez accés à différentes option. Vous pouvez supprimer le plat. Vous pouvez modifier le plat. Vous pouvez voir le thermostat correspondant et vous pouvez revenir en arrière en appuyant sur Annuler\n\nAjouter :\nIci vous pouvez ajouter le plat de votre choix en y renseignant le nom du plat ainsi que la durée de cuisson et pour finir la température de cuisson. Vous pouvez ensuite cliquer sur Ajouter pour enregistrer le nouveau plat. Mais vous pouvez aussi cliquer sur le bouton Effacer qui a pour but de reinitialiser les valeurs de la page.\n\nMais vous avez aussi accés a un menu d'option en haut à droite qui vous donne la posibilité de rénitialiser l'application ainsi qu'afficher une aide."</string>
     <string name="alert_erreur_plat_existant">erreur_à_completer</string>
 
     <!--  Texte par defaut de la liste  -->

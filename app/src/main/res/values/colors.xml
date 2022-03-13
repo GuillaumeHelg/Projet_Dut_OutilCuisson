@@ -13,7 +13,7 @@
     <color name="teal_200">#FF03DAC5</color>
 
     <!--  Couleur du texte du menu not focus sur le menu  -->
-    <color name="color_text_no_focus_menu">#ACACAC</color>
+    <color name="color_text_no_focus_menu">#B6B6B6</color>
 
     <!--  Couleur du texte focus sur le menu  -->
     <color name="color_text_focus_menu">#FFFFFF</color>
@@ -23,7 +23,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--  Couleur pour le logo  -->
-    <color name="background_color_logo">#171C33</color>
+    <color name="background_color_logo">#016B40</color>
 
     <!--  Couleur des titres de l'application  -->
     <color name="color_titre">#115C3B</color>
@@ -31,9 +31,15 @@
     <!--  Couleur du texte dans les listes  -->
     <color name="couleur_item_liste">#142715</color>
 
+    <!--  Couleur des bordures des inputs  -->
+    <color name="couleur_input_focus">#142715</color>
+    <color name="couleur_input_not_focus">#7E142715</color>
+
     <!--  Couleur des titres des parties avant la liste  -->
     <color name="color_titre_liste">#4B7A39</color>
 
+    <!--  Couleur de fond de l'application  -->
+    <color name="background_color_app_general">#E5FFE5</color>
 
 
 </resources>
