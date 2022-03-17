@@ -9,9 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -28,7 +26,12 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
+    /*
+     * nom du fichier dans lequel on va écrire la liste des plats, ce qui permet
+     * la persistance des données
+     */
     private static final String NOM_FICHIER = "bd.txt";
+
     private static final Logger logger = Logger.getLogger(MainActivity.class.getName());
 
     @Override
@@ -97,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
             for ( Plat plat : list ) {
                 ligne = plat.getNom() + "|" + plat.getDuree() + "|" + plat.getDeg() + "\n";
                 fichier.write(ligne.getBytes());
-
             }
             fichier.close();
         } catch (IOException e) {
@@ -150,12 +152,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-
     /**
-     * Methode sur le menu d'option du fragment afficher
-     * @param item :
-     * @return :
+     * Methode sur le menu d'option du fragment afficher qui va permettre d'acceder à :
+     * - une aide
+     * - la possibilité de réinitialiser les données
+     * - annulé le clic
+     * @param item : item en param
+     * @return : retourne un boolean
      */
     @SuppressLint("NonConstantResourceId")
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -165,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.reinitialiser:
                 confirmation();
-                //TODO taf
+
                 break;
             case R.id.annule:
                 break;
@@ -179,21 +182,21 @@ public class MainActivity extends AppCompatActivity {
      */
     public void confirmation() {
         new AlertDialog.Builder(this)
-                .setTitle(R.string.attention)
-                .setMessage(R.string.contenu_attention)
-                .setPositiveButton(R.string.oui, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Afficher.list.clear();
-                        enregistre();
-                        finish();
-                        overridePendingTransition(0, 0);
-                        startActivity(getIntent());
-                        overridePendingTransition(0, 0);
-                    }
-                })
-                .setNegativeButton(R.string.non, null)
-                .show();
+        .setTitle(R.string.attention)
+        .setMessage(R.string.contenu_attention)
+        .setPositiveButton(R.string.oui, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Afficher.list.clear();
+                enregistre();
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            }
+        })
+        .setNegativeButton(R.string.non, null)
+        .show();
     }
 
     /**
@@ -201,9 +204,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public void aide() {
         new AlertDialog.Builder(this)
-                .setTitle(R.string.aide)
-                .setMessage(R.string.message_aide)
-                .setNeutralButton(R.string.ferme, null)
-                .show();
+        .setTitle(R.string.aide)
+        .setMessage(R.string.message_aide)
+        .setNeutralButton(R.string.ferme, null)
+        .show();
     }
 }

@@ -20,8 +20,11 @@ import java.util.ArrayList;
  */
 public class Ajouter extends Fragment implements View.OnClickListener {
 
+    /* Bouton xml liés au fragment ajouter */
     private Button btnEffacer;
     private Button btnValider;
+
+    /* EditText et TimePicker qui sont liés aux données entré par l'utilisateur */
     private TimePicker duree;
     private EditText nomPlat;
     private EditText temperature;
@@ -41,12 +44,23 @@ public class Ajouter extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
+    /**
+     * méthode qui permet de créer la vue
+     * @param savedInstanceState :
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
 
+    /**
+     * Méthode qui va permettre l'initialisation des toutes les variables liées au xml
+     * @param inflater :
+     * @param container :
+     * @param savedInstanceState :
+     * @return :
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,20 +80,24 @@ public class Ajouter extends Fragment implements View.OnClickListener {
         return vueDuFragment;
     }
 
+    /**
+     * méthode qui affiche une popup d'erreur lorsque qu'il y'a une erreur de saisie
+     */
     @SuppressLint("ResourceAsColor")
-    public void AfficherErreur() {
-        AlertDialog alert = new AlertDialog.Builder(getContext())
+    public void afficherErreur() {
+        AlertDialog alert = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.erreur_de_saisie)
                 .setMessage(R.string.alert_erreur_de_saisie)
                 .setNeutralButton(R.string.retourAlertDialog, null)
                 .show();
-
         alert.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.color_titre_liste);
-
-
-
     }
 
+    /**
+     * Méthode onClick qui teste si les données entrées sont bonnes lorsque l'on clique sur le bouton
+     * et qui permet de soit valider l'ajout des données soit d'effacer les données entrées
+     * @param view :
+     */
     @SuppressLint("ResourceAsColor")
     @Override
     public void onClick(View view) {
@@ -89,28 +107,26 @@ public class Ajouter extends Fragment implements View.OnClickListener {
 
         if(view.getId() == R.id.btnValider) {
             if(temp.isEmpty() || nom.isEmpty()) {
-                AfficherErreur();
+                afficherErreur();
             } else if(Integer.parseInt(temp) > 300 || Integer.parseInt(temp) <= 0) {
-                AfficherErreur();
+                afficherErreur();
             } else if(nomPlat.getText().toString().contains("|")) {
-                AfficherErreur();
+                afficherErreur();
             } else if (duree.getCurrentHour() > 9 || (duree.getCurrentHour() == 0 && duree.getCurrentMinute() == 0)) {
-                AfficherErreur();
+                afficherErreur();
             } else {
                 if(exist(nom)) {
-                    AlertDialog salut = new AlertDialog.Builder(getContext())
+                    AlertDialog salut = new AlertDialog.Builder(getActivity())
                             .setTitle(R.string.erreur_de_saisie)
                             .setMessage(R.string.alert_erreur_plat_existant)
                             .setNeutralButton(R.string.ferme, null)
                             .show();
                     salut.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.color_titre_liste);
-
                 } else {
                     dure  = duree.getCurrentHour() + "h" + (duree.getCurrentMinute() <= 9 ? "0" + duree.getCurrentMinute() : duree.getCurrentMinute());
                     Afficher.list.add(new Plat(nom, dure, Integer.parseInt(temp)));
                     Toast.makeText(getContext(), getString(R.string.toast_ajout, nomPlat.getText()), Toast.LENGTH_LONG).show();
                 }
-
             }
         } else if (view.getId() == R.id.btnEffacer) {
             temperature.setText("");
@@ -120,10 +136,10 @@ public class Ajouter extends Fragment implements View.OnClickListener {
         }
     }
 
-    private boolean exist(String nom) {
+    public static boolean exist(String nom) {
         ArrayList<Plat> liste = Afficher.list;
         for (Plat plat : liste ) {
-            if(plat.getNom().equals(nom)) {
+            if(plat.getNom().trim().equals(nom.trim())) {
                 return true;
             }
         }

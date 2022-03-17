@@ -7,13 +7,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         tools:context=".Ajouter"
-        android:stretchColumns="2"
-        >
+        android:stretchColumns="2">
 
         <FrameLayout
-            android:id="@+id/frame_layout"
-
-            />
+            android:id="@+id/frame_layout"/>
 
         <TextView
             android:id="@+id/arf"
@@ -35,7 +32,7 @@
                 android:layout_marginStart="5dp"
                 android:textColor="@color/color_titre_liste"/>
             <EditText
-                android:id="@+id/EditNomPlat"
+                android:id="@+id/modifNomPlat"
                 android:layout_span="2"
                 android:inputType="text"
                 android:maxLength="20"
@@ -57,7 +54,7 @@
                 android:layout_marginStart="5dp"
                 android:textColor="@color/color_titre_liste"/>
             <TimePicker
-                android:id="@+id/TPDureeCuisson"
+                android:id="@+id/modifDureeCuisson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:timePickerMode="spinner"/>
@@ -74,7 +71,7 @@
                 android:layout_marginStart="5dp"
                 android:textColor="@color/color_titre_liste"/>
             <EditText
-                android:id="@+id/EditTemperature"
+                android:id="@+id/modifTemperature"
                 android:layout_column="2"
                 android:inputType="number"
                 android:background="@drawable/input_custom"
@@ -83,21 +80,5 @@
                 android:drawablePadding="10dp"
                 android:layout_marginEnd="10dp"/>
         </TableRow>
-        <TableRow>
-            <Button
-                android:id="@+id/btnEffacer"
-                android:layout_column="1"
-                android:text="@string/btn_effacer"
-                android:layout_marginEnd="5dp"
-                android:textStyle="bold"
-                style="?android:attr/buttonBarButtonStyle" />
-
-            <Button
-                android:id="@+id/btnValider"
-                android:text="@string/btn_valider"
-                android:layout_marginEnd="10dp"/>
-
-        </TableRow>
     </TableLayout>
-
 </ScrollView>

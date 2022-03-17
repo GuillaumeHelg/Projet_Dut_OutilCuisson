@@ -13,7 +13,7 @@
     <string name="degresT">"Degrès"</string>
 
     <!--   Titre sur la page "AJOUTER"   -->
-    <string name="titre">"Description cuisson d'un plat"</string>
+    <string name="titre">"Modification de la cuisson d'un plat"</string>
     <string name="plat">"Plat"</string>
     <string name="duree">"Durée de la cuisson"</string>
     <string name="temperature">"Température"</string>
@@ -22,10 +22,11 @@
 
 
     <string name="toast_ajout">"✔    Le plat %s a bien été ajouté à la liste"</string>
+    <string name="toast_modif">"✔    Le plat %s a bien été modifié"</string>
 
     <string name="erreur_de_saisie">"Erreur de saisie"</string>
 
-    <string name="alert_erreur_de_saisie">"L'une des informations saisie ets incorrecte :
+    <string name="alert_erreur_de_saisie">"L'une des informations saisie est incorrecte :
         \n\t - nom du plat vide ou contient | \n\t - duree de cuisson nulle ou trop grande \n\nVerifiez les valeurs saisies"
     </string>
 
@@ -66,6 +67,9 @@
 
     <string name="plat_existe">Le plat %s existe bien déjà dans la liste !</string>
     <string name="plat_existe_pas">Le plat %s n\'existe pas dans la liste !</string>
+    <string name="btn_modifier">MODIFIER</string>
+    <string name="rechercher_un_plat">Rechercher un plat</string>
+    <string name="chercher">Chercher</string>
 
 
 </resources>

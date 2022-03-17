@@ -1,13 +1,11 @@
 package fr.lordloss.projet_dut_outilcuisson;
 
 import android.annotation.SuppressLint;
-import android.content.ClipData;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -18,11 +16,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.regex.Pattern;
 
 import fr.lordloss.projet_dut_outilcuisson.adapter.PlatListeAdapter;
 
@@ -31,16 +30,25 @@ import fr.lordloss.projet_dut_outilcuisson.adapter.PlatListeAdapter;
  */
 public class Afficher extends Fragment implements View.OnClickListener {
 
-    /* Liste plat */
+    /* Liste plat dans le xml */
     private  ListView listePlat;
 
+    /* composants du xml qui doivent être modifiés */
+    private TimePicker duree;
+    private EditText nomPlat;
+    private EditText temperature;
 
 
+    /* Tableau de plats utilisé pour la listeView dans le fragment afficher mais aussi
+     * dans le fragment Ajouter */
     public static ArrayList<Plat> list = new ArrayList<>();
 
+    /* Adapteur de la liste */
+    @SuppressLint("StaticFieldLeak")
     public static PlatListeAdapter adapter;
 
-    EditText editText;
+    /* Pour la barre de recherche */
+    private EditText editRecherche;
 
     /**
      * Température maximale pour la cuisson
@@ -67,11 +75,12 @@ public class Afficher extends Fragment implements View.OnClickListener {
     }
 
     /**
-     *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return :
+     * Methode qui va permettrent de liés les éléments du xml à la partie java pour la partie dynamique
+     * de l'application
+     * @param inflater : permet d'instancier un fichier de mise en page xml
+     * @param container : Layout
+     * @param savedInstanceState :
+     * @return : retourne une vue
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,7 +88,7 @@ public class Afficher extends Fragment implements View.OnClickListener {
         View vueDuFragment = inflater.inflate(R.layout.fragment_afficher, container, false);
         listePlat = vueDuFragment.findViewById(R.id.liste_plat);
 
-        editText = (EditText) vueDuFragment.findViewById(R.id.plat_recherche);
+        editRecherche = (EditText) vueDuFragment.findViewById(R.id.plat_recherche);
         vueDuFragment.findViewById(R.id.btn_recherche).setOnClickListener(this);
 
         miseAjour();
@@ -123,16 +132,63 @@ public class Afficher extends Fragment implements View.OnClickListener {
         return (super.onContextItemSelected(item));
     }
 
+    /**
+     *
+     * @param position
+     */
     private void modfier(int position) {
-        final View boiteAjoutArticle =
-                getLayoutInflater().inflate(R.layout.modifcation, null);
+        String temps;
+        Plat plat = list.get(position);
+        String regex = "h";
+
+        Pattern pattern = Pattern.compile(regex);
+        String[] result = pattern.split(plat.getDuree());
+
+        final View boiteAjoutArticle = getLayoutInflater().inflate(R.layout.modifcation, null);
+
+        duree = boiteAjoutArticle.findViewById(R.id.modifDureeCuisson);
+        nomPlat = boiteAjoutArticle.findViewById(R.id.modifNomPlat);
+        temperature = boiteAjoutArticle.findViewById(R.id.modifTemperature);
+
         new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.ajouter)
                 .setView(boiteAjoutArticle)
-                .setMessage(getString(R.string.equivalentThermostatText))
                 .setNeutralButton(R.string.retourAlertDialog, null)
+                .setPositiveButton(R.string.modifier, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String nom = nomPlat.getText().toString();
+                        String temp = temperature.getText().toString();
+                        String dure;
+
+                        if (temp.isEmpty() || nom.isEmpty()) {
+                            afficherLesErreur();
+                        } else if (Integer.parseInt(temp) > 300 || Integer.parseInt(temp) <= 0) {
+                            afficherLesErreur();
+                        } else if (nomPlat.getText().toString().contains("|")) {
+                            afficherLesErreur();
+                        } else if (duree.getCurrentHour() > 9 || (duree.getCurrentHour() == 0 && duree.getCurrentMinute() == 0)) {
+                            afficherLesErreur();
+                        } else {
+                            dure = duree.getCurrentHour() + "h" + (duree.getCurrentMinute() <= 9 ? "0" + duree.getCurrentMinute() : duree.getCurrentMinute());
+                            plat.setNom(nom);
+                            plat.setDuree(dure);
+                            plat.setDeg(Integer.parseInt(temp));
+                            Toast.makeText(getContext(), getString(R.string.toast_modif, nomPlat.getText()), Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                })
                 .show();
+        miseAjour();
+
+        nomPlat.setText(String.valueOf(plat.getNom()));
+        temperature.setText(String.valueOf(plat.getDeg()));
+        duree.setIs24HourView(true);
+        duree.setCurrentHour(Integer.parseInt(result[0]));
+        duree.setCurrentMinute(Integer.parseInt(result[1]));
     }
+
+
 
     public void miseAjour() {
         adapter = new PlatListeAdapter(getContext(), R.layout.liste_item, list);
@@ -179,12 +235,13 @@ public class Afficher extends Fragment implements View.OnClickListener {
     }
 
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onClick(View view) {
-        String platRecherche = editText.getText().toString();
+        String platRecherche = editRecherche.getText().toString();
         boolean trouvee = false;
         if (view.getId() == R.id.btn_recherche) {
-            for (Plat plat: list) {
+            for (Plat plat : list) {
                 if (plat.getNom().equals(platRecherche)) {
                     Toast.makeText(getContext(), getString(R.string.plat_existe, platRecherche), Toast.LENGTH_LONG).show();
                     trouvee = true;
@@ -195,5 +252,19 @@ public class Afficher extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(), getString(R.string.plat_existe_pas, platRecherche), Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    /**
+     * méthode qui affiche une popup d'erreur lorsque qu'il y'a une erreur de saisie
+     */
+    @SuppressLint("ResourceAsColor")
+    public void afficherLesErreur() {
+        AlertDialog alert = new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.erreur_de_saisie)
+                .setMessage(R.string.alert_erreur_de_saisie)
+                .setNeutralButton(R.string.retourAlertDialog, null)
+                .show();
+
+        alert.getButton(android.app.AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.color_titre_liste);
     }
 }

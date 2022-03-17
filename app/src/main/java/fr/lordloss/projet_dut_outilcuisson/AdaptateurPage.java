@@ -39,7 +39,7 @@ public class AdaptateurPage extends FragmentStateAdapter {
 
 
     /**
-     *
+     * Retourne le nombre de fragments qu'il y'a dans l'application
      * @return : renvoie le nombre de fragment
      */
     @Override

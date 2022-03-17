@@ -7,19 +7,16 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         tools:context=".Ajouter"
-        android:stretchColumns="2"
-        >
+        android:stretchColumns="2">
 
         <FrameLayout
-            android:id="@+id/frame_layout"
-
-            />
+            android:id="@+id/frame_layout"/>
 
         <TextView
             android:id="@+id/arf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/titre"
+            android:text="@string/ajouter"
             style="@style/titreApp"/>
 
         <!-- Saisir le nom du plat -->
@@ -96,8 +93,6 @@
                 android:id="@+id/btnValider"
                 android:text="@string/btn_valider"
                 android:layout_marginEnd="10dp"/>
-
         </TableRow>
     </TableLayout>
-
 </ScrollView>

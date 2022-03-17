@@ -24,18 +24,19 @@
             android:layout_width="450dp"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_outline_search_24"
-            android:hint="Rechercher un plat"
+            android:hint="@string/rechercher_un_plat"
             android:layout_margin="10dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:background="@drawable/input_custom"/>
+            android:background="@drawable/input_custom"
+            android:maxLines="1"/>
 
         <Button
             android:id="@+id/btn_recherche"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chercher"/>
+            android:text="@string/chercher"/>
     </LinearLayout>
 
     <LinearLayout
