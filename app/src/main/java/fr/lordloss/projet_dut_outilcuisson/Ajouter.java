@@ -1,5 +1,6 @@
 package fr.lordloss.projet_dut_outilcuisson;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -65,14 +66,21 @@ public class Ajouter extends Fragment implements View.OnClickListener {
         return vueDuFragment;
     }
 
+    @SuppressLint("ResourceAsColor")
     public void AfficherErreur() {
-        new AlertDialog.Builder(getContext())
+        AlertDialog alert = new AlertDialog.Builder(getContext())
                 .setTitle(R.string.erreur_de_saisie)
                 .setMessage(R.string.alert_erreur_de_saisie)
                 .setNeutralButton(R.string.retourAlertDialog, null)
                 .show();
+
+        alert.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.color_titre_liste);
+
+
+
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onClick(View view) {
         String nom = nomPlat.getText().toString();
@@ -86,17 +94,19 @@ public class Ajouter extends Fragment implements View.OnClickListener {
                 AfficherErreur();
             } else if(nomPlat.getText().toString().contains("|")) {
                 AfficherErreur();
-            } else if (duree.getHour() > 9 || (duree.getHour() == 0 && duree.getMinute() == 0)) {
+            } else if (duree.getCurrentHour() > 9 || (duree.getCurrentHour() == 0 && duree.getCurrentMinute() == 0)) {
                 AfficherErreur();
             } else {
                 if(exist(nom)) {
-                    new AlertDialog.Builder(getContext())
+                    AlertDialog salut = new AlertDialog.Builder(getContext())
                             .setTitle(R.string.erreur_de_saisie)
                             .setMessage(R.string.alert_erreur_plat_existant)
                             .setNeutralButton(R.string.ferme, null)
                             .show();
+                    salut.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.color_titre_liste);
+
                 } else {
-                    dure  = duree.getHour() + "h" + (duree.getMinute() <= 9 ? "0" + duree.getMinute() : duree.getMinute());
+                    dure  = duree.getCurrentHour() + "h" + (duree.getCurrentMinute() <= 9 ? "0" + duree.getCurrentMinute() : duree.getCurrentMinute());
                     Afficher.list.add(new Plat(nom, dure, Integer.parseInt(temp)));
                     Toast.makeText(getContext(), getString(R.string.toast_ajout, nomPlat.getText()), Toast.LENGTH_LONG).show();
                 }
@@ -105,8 +115,8 @@ public class Ajouter extends Fragment implements View.OnClickListener {
         } else if (view.getId() == R.id.btnEffacer) {
             temperature.setText("");
             nomPlat.setText("");
-            duree.setHour(0);
-            duree.setMinute(0);
+            duree.setCurrentHour(0);
+            duree.setCurrentMinute(0);
         }
     }
 

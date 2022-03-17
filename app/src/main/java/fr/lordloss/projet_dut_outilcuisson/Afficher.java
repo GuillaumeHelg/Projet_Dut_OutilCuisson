@@ -124,14 +124,14 @@ public class Afficher extends Fragment implements View.OnClickListener {
     }
 
     private void modfier(int position) {
-
-        Fragment fragment = new Ajouter();
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-
+        final View boiteAjoutArticle =
+                getLayoutInflater().inflate(R.layout.modifcation, null);
+        new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.ajouter)
+                .setView(boiteAjoutArticle)
+                .setMessage(getString(R.string.equivalentThermostatText))
+                .setNeutralButton(R.string.retourAlertDialog, null)
+                .show();
     }
 
     public void miseAjour() {

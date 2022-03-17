@@ -14,7 +14,10 @@
         app:tabBackground="@color/backgroud_color_menu"
         app:tabSelectedTextColor="@color/color_text_focus_menu"
         app:tabIndicatorColor="@color/white"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:tabMaxWidth="0dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/activity_main_viewpager"

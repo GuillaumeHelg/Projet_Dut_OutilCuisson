@@ -12,7 +12,7 @@
         android:paddingTop="@dimen/padding_liste"
         android:paddingStart="15dp"
         android:paddingBottom="@dimen/padding_liste"
-        android:layout_width="215dp"
+        android:layout_width="410dp"
         android:layout_height="wrap_content"
         android:textColor="@color/couleur_item_liste"
         android:text="@string/liste_item_nomPlat"
