@@ -154,6 +154,7 @@ public class Afficher extends Fragment implements View.OnClickListener {
                 .setView(boiteAjoutArticle)
                 .setNeutralButton(R.string.retourAlertDialog, null)
                 .setPositiveButton(R.string.modifier, new DialogInterface.OnClickListener() {
+                    @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String nom = nomPlat.getText().toString();
@@ -169,11 +170,21 @@ public class Afficher extends Fragment implements View.OnClickListener {
                         } else if (duree.getCurrentHour() > 9 || (duree.getCurrentHour() == 0 && duree.getCurrentMinute() == 0)) {
                             afficherLesErreur();
                         } else {
+                            if(existModif(nom)) {
+                                android.app.AlertDialog salut = new android.app.AlertDialog.Builder(getActivity())
+                                        .setTitle(R.string.erreur_de_saisie)
+                                        .setMessage(R.string.alert_erreur_plat_existant)
+                                        .setNeutralButton(R.string.ferme, null)
+                                        .show();
+                                salut.getButton(android.app.AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.color_titre_liste);
+                            } else {
                             dure = duree.getCurrentHour() + "h" + (duree.getCurrentMinute() <= 9 ? "0" + duree.getCurrentMinute() : duree.getCurrentMinute());
                             plat.setNom(nom);
                             plat.setDuree(dure);
                             plat.setDeg(Integer.parseInt(temp));
                             Toast.makeText(getContext(), getString(R.string.toast_modif, nomPlat.getText()), Toast.LENGTH_LONG).show();
+                        }
+
                         }
 
                     }
@@ -266,5 +277,15 @@ public class Afficher extends Fragment implements View.OnClickListener {
                 .show();
 
         alert.getButton(android.app.AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.color_titre_liste);
+    }
+
+    public static boolean existModif(String nom) {
+        ArrayList<Plat> liste = Afficher.list;
+        for (Plat plat : liste ) {
+            if(plat.getNom().trim().equals(nom.trim())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
